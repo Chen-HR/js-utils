@@ -60,10 +60,10 @@ Modules can be loaded directly through the Tampermonkey `@require` directive.
 // ==UserScript==
 // @name         My Tampermonkey Script
 // @match        https://example.com/*
-// @require      https://raw.githubusercontent.com/<USERNAME>/<REPOSITORY>/main/src/async.js
-// @require      https://raw.githubusercontent.com/<USERNAME>/<REPOSITORY>/main/src/array.js
-// @require      https://raw.githubusercontent.com/<USERNAME>/<REPOSITORY>/main/src/dom.js
-// @require      https://raw.githubusercontent.com/<USERNAME>/<REPOSITORY>/main/src/string.js
+// @require      https://cdn.jsdelivr.net/gh/Chen-HR/js-utils@0.1/src/async.js
+// @require      https://cdn.jsdelivr.net/gh/Chen-HR/js-utils@0.1/src/array.js
+// @require      https://cdn.jsdelivr.net/gh/Chen-HR/js-utils@0.1/src/dom.js
+// @require      https://cdn.jsdelivr.net/gh/Chen-HR/js-utils@0.1/src/string.js
 // @grant        none
 // ==/UserScript==
 ```

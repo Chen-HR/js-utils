@@ -12,13 +12,13 @@
          * @returns {Promise<Element>}
          * @throws {Error} If the timeout is reached before finding the element.
          */
-        async querySelector( ele, selector, wait_ms = 100, timeout_ms = 10000 ) {
+        async querySelector( ele, selector, wait_ms = 1000, timeout_ms = 16000 ) {
             const startTime = Date.now();
             while (true) {
+                await Utils.Async.sleep_ms(wait_ms);
                 const subele = ele.querySelector(selector);
                 if (subele) return subele;
                 if (Date.now() - startTime >= timeout_ms) throw new Error(`querySelector timeout: "${selector}"`);
-                await Utils.Async.sleep_ms(wait_ms);
             }
         },
 
@@ -32,13 +32,13 @@
          * @returns {Promise<NodeList>}
          * @throws {Error} If the timeout is reached before finding elements.
          */
-        async querySelectorAll( ele, selector, wait_ms = 100, timeout_ms = 10000 ) {
+        async querySelectorAll( ele, selector, wait_ms = 1000, timeout_ms = 16000 ) {
             const startTime = Date.now();
             while (true) {
+                await Utils.Async.sleep_ms(wait_ms);
                 const subele = ele.querySelectorAll(selector);
                 if (subele.length > 0) return subele;
                 if (Date.now() - startTime >= timeout_ms) throw new Error(`querySelectorAll timeout: "${selector}"`);
-                await Utils.Async.sleep_ms(wait_ms);
             }
         }
 

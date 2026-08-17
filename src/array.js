@@ -1,10 +1,10 @@
 (function (Utils) {
-    "use strict";
+  "use strict";
 
-    Utils.Array = Object.freeze({
-        unique(arr) {
-            return [...new Set(arr)];
-        }
-    });
+  Utils.Array = Object.freeze({
+    unique(arr) {
+      return [...new Set(arr)];
+    }
+  });
 
 })(globalThis.Utils ??= {});

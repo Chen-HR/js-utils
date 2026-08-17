@@ -4,11 +4,11 @@
   Utils.Gate = Object.freeze({
     isMermaidCode(codeText) {
       const validBaseTypes = new Set([
-        "graph", "flowchart", "swimlane", "sequenceDiagram", "classDiagram", 
-        "stateDiagram", "erDiagram", "journey", "gantt", "pie", 
-        "quadrantChart", "requirementDiagram", "gitGraph", "C4Context", "mindmap", 
-        "timeline", "zenuml", "sankey", "xychart", "block", 
-        "packet", "kanban", "architecture", "radar", "eventmodeling", 
+        "graph", "flowchart", "swimlane", "sequenceDiagram", "classDiagram",
+        "stateDiagram", "erDiagram", "journey", "gantt", "pie",
+        "quadrantChart", "requirementDiagram", "gitGraph", "C4Context", "mindmap",
+        "timeline", "zenuml", "sankey", "xychart", "block",
+        "packet", "kanban", "architecture", "radar", "eventmodeling",
         "treemap", "venn", "ishikawa", "wardley", "cynefin", "treeView"
       ]);
 

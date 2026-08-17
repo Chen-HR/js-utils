@@ -21,6 +21,7 @@ js-utils/
 │ ├ async.js
 │ ├ array.js
 │ ├ dom.js
+│ ├ gate.js
 │ └ string.js
 └ Readme.md
 ```
@@ -29,12 +30,13 @@ The `src` directory is the single source of truth for all utility modules. No du
 
 ## Modules
 
-| Module | Namespace | Description |
-|---|---|---|
-| `async.js` | `Utils.Async` | Asynchronous operation utilities |
-| `array.js` | `Utils.Array` | Array manipulation utilities |
-| `dom.js` | `Utils.DOM` | DOM querying and interaction utilities |
-| `string.js` | `Utils.String` | String processing utilities |
+| Module      | Namespace      | Description                            |
+|-------------|----------------|----------------------------------------|
+| `async.js`  | `Utils.Async`  | Asynchronous operation utilities       |
+| `array.js`  | `Utils.Array`  | Array manipulation utilities           |
+| `dom.js`    | `Utils.DOM`    | DOM querying and interaction utilities |
+| `gate.js`   | `Utils.Gate`   |                                        |
+| `string.js` | `Utils.String` | String processing utilities            |
 
 Additional modules can be added to `src` as the library grows.
 
@@ -47,6 +49,7 @@ Utils
 ├ Async
 ├ Array
 ├ DOM
+├ Gate
 └ String
 ```
 
@@ -60,10 +63,11 @@ Modules can be loaded directly through the Tampermonkey `@require` directive.
 // ==UserScript==
 // @name         My Tampermonkey Script
 // @match        https://example.com/*
-// @require      https://cdn.jsdelivr.net/gh/Chen-HR/js-utils@0.1/src/async.js
-// @require      https://cdn.jsdelivr.net/gh/Chen-HR/js-utils@0.1/src/array.js
-// @require      https://cdn.jsdelivr.net/gh/Chen-HR/js-utils@0.1/src/dom.js
-// @require      https://cdn.jsdelivr.net/gh/Chen-HR/js-utils@0.1/src/string.js
+// @require      https://cdn.jsdelivr.net/gh/Chen-HR/js-utils@0.2/src/async.js
+// @require      https://cdn.jsdelivr.net/gh/Chen-HR/js-utils@0.2/src/array.js
+// @require      https://cdn.jsdelivr.net/gh/Chen-HR/js-utils@0.2/src/dom.js
+// @require      https://cdn.jsdelivr.net/gh/Chen-HR/js-utils@0.2/src/gate.js
+// @require      https://cdn.jsdelivr.net/gh/Chen-HR/js-utils@0.2/src/string.js
 // @grant        none
 // ==/UserScript==
 ```
@@ -90,6 +94,7 @@ src/
 ├ async.js
 ├ array.js
 ├ dom.js
+├ gate.js
 ├ string.js
 └ url.js
 ```

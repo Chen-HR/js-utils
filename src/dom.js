@@ -1,7 +1,7 @@
 (function (Utils) {
     "use strict";
 
-    const DOMUtils = {
+    Utils.DOM = Object.freeze({
         /**
          * Wait until an element matching the selector exists.
          *
@@ -58,8 +58,6 @@
             });
         }
 
-    };
-
-    Utils.DOM = Object.freeze(DOMUtils);
+    });
 
 })(globalThis.Utils ??= {});

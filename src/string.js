@@ -9,8 +9,7 @@
         "by", "with", "via"
     ]);
 
-
-    const StringUtils = {
+    Utils.String = Object.freeze({
         toTitleCase(str) {
             const tokens = str.split(/([ -])/);
             let isFirstWord = true;
@@ -26,8 +25,6 @@
                     return (token.charAt(0).toUpperCase() + token.slice(1).toLowerCase());
                 }).join("");
         }
-    };
-
-    Utils.String = Object.freeze(StringUtils);
+    });
 
 })(globalThis.Utils ??= {});

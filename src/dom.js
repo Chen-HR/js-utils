@@ -40,6 +40,22 @@
                 if (subele.length > 0) return subele;
                 if (Date.now() - startTime >= timeout_ms) throw new Error(`querySelectorAll timeout: "${selector}"`);
             }
+        },
+
+        /**
+         * Loads an external script into the document head and waits for it to load.
+         *
+         * @param {string} src - The URL of the script to load.
+         * @returns {Promise<void>} A promise that resolves when the script has successfully loaded, or rejects if an error occurs during loading.
+         */
+        async loadScript(src) {
+            return new Promise((resolve, reject) => {
+                const script = document.createElement("script");
+                script.src = src;
+                script.onload = resolve;
+                script.onerror = reject;
+                document.head.appendChild(script);
+            });
         }
 
     };

@@ -56,8 +56,62 @@
         script.onerror = reject;
         document.head.appendChild(script);
       });
-    }
+    },
 
+    /**
+     * Creates a new DOM element configured to copy specified content to the clipboard upon clicking it.
+     *
+     * @param {string} eleName - The tag name of the element (e.g., 'button').
+     * @param {string} eleId - The ID to assign to the created element.
+     * @param {string} eleContent - The visible text content displayed on the element.
+     * @param {string} copyContent - The actual text content that will be copied to the clipboard.
+     * @param {() => void} [onLoad] - Optional callback function executed after successful copying.
+     * @param {(err: Error) => void} [onError] - Optional callback function executed if copying fails.
+     * @returns {HTMLElement} The newly created and configured DOM element.
+     */
+    createElement_copy(eleName, eleId, eleContent, copyContent, onLoad = () => {}, onError = (err) => {}) {
+      const ele = document.createElement(eleName);
+      ele.id = eleId;
+      ele.textContent = eleContent;
+      ele.addEventListener('click', function () {
+        navigator.clipboard.writeText(copyContent).then(() => {
+          onLoad();
+        }).catch(err => {
+          onError(err);
+        });
+      });
+      return ele;
+    },
+
+    /**
+     * Creates a new DOM element configured to trigger a file download upon clicking it.
+     *
+     * @param {string} eleName - The tag name of the element (e.g., 'button').
+     * @param {string} eleId - The ID to assign to the created element.
+     * @param {string} eleContent - The visible text content displayed on the element.
+     * @param {string} fileName - The desired filename for the downloaded file.
+     * @param {(Blob|string)} fileContent - The content of the file (can be a Blob or string).
+     * @param {string} [fileType='text/plain;charset=utf-8'] - The MIME type of the file.
+     * @param {() => void} [onLoad] - Optional callback function executed after successful download.
+     * @param {(err: Error) => void} [onError] - Optional callback function executed if downloading fails.
+     * @returns {HTMLElement} The newly created and configured DOM element.
+     */
+    createElement_download(eleName, eleId, eleContent, fileName, fileContent, fileType = 'text/plain;charset=utf-8', onLoad = () => {}, onError = (err) => {}) {
+      const ele = document.createElement(eleName);
+      ele.id = eleId;
+      ele.textContent = eleContent;
+      ele.addEventListener('click', async function (event) {
+        try {
+          const url = URL.createObjectURL(fileContent instanceof Blob ? fileContent : new Blob([fileContent], { type: fileType }));
+          const a = document.createElement('a'); a.href = url; a.download = fileName;
+          document.body.appendChild(a); a.click(); document.body.removeChild(a); URL.revokeObjectURL(url);
+          onLoad();
+        } catch (err) {
+          onError(err);
+        }
+      });
+      return ele;
+    },
   });
 
 })(globalThis.Utils ??= {});

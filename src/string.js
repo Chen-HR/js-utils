@@ -1,16 +1,15 @@
 (function (Utils) {
   "use strict";
 
-  const minorWords = new Set([
-    "and", "or", "nor",
-    "but", "of", "for",
-    "from", "to",
-    "in", "on", "at",
-    "by", "with", "via"
-  ]);
-
   Utils.String = Object.freeze({
     toTitleCase(str) {
+      const minorWords = new Set([
+        "and", "or", "nor",
+        "but", "of", "for",
+        "from", "to",
+        "in", "on", "at",
+        "by", "with", "via"
+      ]);
       const tokens = str.split(/([ -])/);
       let isFirstWord = true;
       return tokens.map(token => {
